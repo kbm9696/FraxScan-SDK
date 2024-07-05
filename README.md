@@ -9,13 +9,15 @@ You can install the Fraxtal Python SDK using pip:
 
 ```bash
 pip install FraxScanSDK
-package: https://pypi.org/project/FraxScanSDK/1.0.0/
+Package Url: https://pypi.org/project/FraxScanSDK/1.0.1/
 ```
 ## Access APIS
 ```bash
-    from FraxScan-SDK import FraxScanApis
-    accounts = FraxScanApis.AccountApi()
-    response = account.get_frxETH_balance(address='0xe7c147cd1a7c05a6e73217645547582024e87a9b')
+from FraxScanSDK import FraxScanApis
+accounts = FraxScanApis.AccountsApi()
+accounts.set_api_key_token(api_key='YSHJE758IWYISKUY3JRB4EVQEDE2BBVZJC')
+response = accounts.get_frxETH_balance(address='0xe7c147cd1a7c05a6e73217645547582024e87a9b')
+print(response)
 ```
 
 ## Features
