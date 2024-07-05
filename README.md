@@ -12,8 +12,8 @@ pip install fraxtal-sdk
 ```
 ## Access APIS
 ```bash
-    from FraxScan-SDK import fraxScanApis
-    accounts = fraxScanApis.AccountApi()
+    from FraxScan-SDK import FraxScanApis
+    accounts = FraxScanApis.AccountApi()
     response = account.get_frxETH_balance(address='0xe7c147cd1a7c05a6e73217645547582024e87a9b')
 ```
 
