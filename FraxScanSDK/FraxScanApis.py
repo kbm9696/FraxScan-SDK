@@ -32,12 +32,12 @@ class AccountsApi:
 
     def get_frxETH_balance(self, address: str):
         endpoint = f'&action=balance&address={address}&tag=latest&apikey={self.api_key}'
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_frxETH_balance_for_multiple_address(self, address: list):
         addr = ','.join(address)
         endpoint = f'&action=balancemulti&address={addr}&tag=latest&apikey={self.api_key}'
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_normal_transaction(self, address: str,
                                start_block: int = 0,
@@ -45,7 +45,7 @@ class AccountsApi:
         endpoint = (f'&action=txlist&address={address}&startblock={start_block}&'
                     f'endblock={end_block}&page=1&offset=10&sort=asc'
                     f'&apikey={self.api_key}')
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_internal_transaction(self, address: str,
                                  start_block: int = 0,
@@ -53,11 +53,11 @@ class AccountsApi:
         endpoint = (f'&action=txlistinternal&address={address}&startblock={start_block}&'
                     f'endblock={end_block}&page=1&offset=10&sort=asc'
                     f'&apikey={self.api_key}')
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_internal_transaction_transaction_hash(self, txhash: str):
         endpoint = f'&action=txlistinternal&txhash={txhash}&apikey={self.api_key}'
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_ERC20_token_transfers(self, address: str,
                                   contract_address: str,
@@ -67,7 +67,7 @@ class AccountsApi:
                     f'&address={address}&startblock={start_block}&'
                     f'endblock={end_block}&page=1&offset=10&sort=asc'
                     f'&apikey={self.api_key}')
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_ERC721_token_transfers(self, address: str,
                                    contract_address: str,
@@ -77,7 +77,7 @@ class AccountsApi:
                     f'&address={address}&startblock={start_block}&'
                     f'endblock={end_block}&page=1&offset=10&sort=asc'
                     f'&apikey={self.api_key}')
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_ERC1155_token_transfers(self, address: str,
                                     contract_address: str,
@@ -87,7 +87,7 @@ class AccountsApi:
                     f'&address={address}&startblock={start_block}&'
                     f'endblock={end_block}&page=1&offset=10&sort=asc'
                     f'&apikey={self.api_key}')
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
 
 class TransactionsApi:
@@ -118,7 +118,7 @@ class TransactionsApi:
 
     def get_transaction_status(self, txhash: str):
         endpoint = f'&action=gettxreceiptstatus&txhash={txhash}&apikey={self.api_key}'
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
 
 class BlocksApi:
@@ -149,16 +149,16 @@ class BlocksApi:
 
     def get_block_rewards_by_blockNo(self, blockno: str):
         endpoint = f'&action=getblockreward&blockno={blockno}&apikey={self.api_key}'
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_estimated_block_countdown_time_by_blockNo(self, blockno: str):
         endpoint = f'&action=getblockcountdown&blockno={blockno}&apikey={self.api_key}'
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_block_no_by_timestamp(self, timestamp: str):
         endpoint = (f'&action=getblocknobytime&timestamp={timestamp}'
                     f'&closest=before&apikey={self.api_key}')
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
 
 class StatsApi:
@@ -190,20 +190,20 @@ class StatsApi:
 
     def get_ERC20_token_by_contractaddress(self, contract_address: str):
         endpoint = f'&action=tokensupply&contractaddress={contract_address}&apikey={self.api_key}'
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_ERC20_token_account_balance(self, contract_address: str, address: str):
         endpoint = (f'&action=tokenbalance&contractaddress={contract_address}'
                     f'&address={address}&apikey={self.api_key}')
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_total_supply_of_frxETH(self):
         endpoint = f'&action=ethsupply&apikey={self.api_key}'
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_frxETH_last_price(self):
         endpoint = f'&action=ethprice&apikey={self.api_key}'
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
 
 class GethProxyApi:
@@ -235,43 +235,43 @@ class GethProxyApi:
 
     def get_eth_block_number(self):
         endpoint = f'&action=eth_blockNumber&apikey={self.api_key}'
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_eth_block_by_number(self,tag: str):
         endpoint = (f'&action=eth_blockNumber&tag={tag}'
                     f'&boolean=true&apikey={self.api_key}')
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_eth_block_transaction_count_by_number(self,tag: str):
         endpoint = (f'&action=eth_getBlockTransactionCountByNumber&tag={tag}'
                     f'&apikey={self.api_key}')
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_eth_transaction_by_hash(self,txhash: str):
         endpoint = (f'&action=eth_getTransactionByHash&txhash={txhash}'
                     f'&apikey={self.api_key}')
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_eth_transaction_by_blocknumber_and_index(self,tag: str,index:str):
         endpoint = (f'&action=eth_getTransactionByBlockNumberAndIndex'
                     f'&tag={tag}&index={index}'
                     f'&apikey={self.api_key}')
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_eth_transaction_count(self,address: str,index:str):
         endpoint = (f'&action=eth_getTransactionCount'
                     f'&address={address}&tag=latest'
                     f'&apikey={self.api_key}')
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def send_raw_transaction(self,hex: str):
         endpoint = (f'&action=eth_sendRawTransaction'
                     f'&hex={hex}'
                     f'&apikey={self.api_key}')
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
 
     def get_transaction_receipt(self,txhash: str):
         endpoint = (f'&action=eth_getTransactionReceipt'
                     f'&txhash={txhash}'
                     f'&apikey={self.api_key}')
-        return self.api_key(endpoint)
+        return self.api_request(endpoint)
