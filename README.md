@@ -8,7 +8,8 @@ Welcome to the Fraxtal Python SDK! This library provides a simple interface for 
 You can install the Fraxtal Python SDK using pip:
 
 ```bash
-pip install fraxtal-sdk
+pip install FraxScanSDK
+package:https://pypi.org/project/FraxScanSDK/
 ```
 ## Access APIS
 ```bash
